@@ -2,7 +2,7 @@ from models.item import Item
 
 item1 = Item("Leche", "Leche entera", 5000)
 item2 = Item("Arroz", "Arroz Diana", 10000)
-item3 = Item("Azucar", "Azucar refinada", 2500)
+item3 = Item("Azucar", "Azucar refinada", 3500)
 
 items = [item1, item2, item3]
 
