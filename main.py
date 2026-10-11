@@ -1,24 +1,72 @@
-from models.item import Item
+## Ejemplo de instanciar objetos tipo item
+# from models.item import Item
 
-item1 = Item("Leche", "Leche entera", 5000)
-item2 = Item("Arroz", "Arroz Diana", 10000)
-item3 = Item("Azucar", "Azucar refinada", 3500)
+# item1 = Item("Leche", "Leche entera", 5000)
+# item2 = Item("Arroz", "Arroz Diana", 10000)
+# item3 = Item("Azucar", "Azucar refinada", 3500)
 
-items = [item1, item2, item3]
+# items = [item1, item2, item3]
 
-for item in items:
-    print("nombre", item.get_name())
-    print("descripción", item.description)
-    print("precio", item.get_price()) 
-    print("----")
+# for item in items:
+#     print("nombre", item.get_name())
+#     print("descripción", item.description)
+#     print("precio", item.get_price()) 
+#     print("----")
+## ---------------------------------------------
 
-from models.user import User
+from controllers.item_controller import ItemController
 
-user1 = User("Roger", "Avila Uribe", "roger@correo.com", "12345")
+## show items crea una copia del array original, 
+# verifica que tenga elementos 
+# y muestra la información de cada uno
 
-print("++++")
-print("Nombre:", user1.name)
-print("Apellidos:", user1.lastName)
-print("Correo:", user1.email)
-print("Password:", user1.password)
+def show_items(item_controller):
+    items = item_controller.get_items()
+
+    if not items:
+        print("No existen items registrados")
+        return 
+
+    for item in items:
+        print(item.show_info())
+
+##-------------------------------------------------------
+## main es la función principal
+def main():
+    item_controller = ItemController()
+
+    while True:
+        print("\nOpciones")
+        print("1. Agregar producto")
+        print("2. Mostrar articulos")
+        print("3. Salir")
+
+        option = input("Selecciona una opción: ")
+
+        match option:
+            case "1":
+                name = input("Ingresa el nombre del item: ")
+                description = input("Ingresa la descripción del item: ")
+                price = float(input("Ingresa el precio del item: "))
+                stock = int(input("Ingresa el número de existencias: "))
+
+                item_controller.add_product(name, description, price, stock)
+                print("Producto agregado con éxito")
+
+            case "2":
+                show_items(item_controller)
+
+            case "3":
+                print("Vuelve pronto")
+                break
+
+            case _:
+                print("Opción inválida")
+
+if __name__ == "__main__":
+    main()
+
+
+    
+
 
