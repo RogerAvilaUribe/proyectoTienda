@@ -36,10 +36,11 @@ def main():
     item_controller = ItemController()
 
     while True:
-        print("\nOpciones")
+        print("\n Opciones")
         print("1. Agregar producto")
-        print("2. Mostrar articulos")
-        print("3. Salir")
+        print("2. Agregar servicio")
+        print("3. Mostrar articulos")
+        print("4. Salir")
 
         option = input("Selecciona una opción: ")
 
@@ -54,9 +55,18 @@ def main():
                 print("Producto agregado con éxito")
 
             case "2":
-                show_items(item_controller)
+                name = input("Ingresa el nombre del item: ")
+                description = input("Ingresa la descripción del item: ")
+                price = float(input("Ingresa el precio del item: "))
+                duration = int(input("Ingresa la duración del servicio en minutos: "))
+
+                item_controller.add_service(name, description, price, duration)
+                print("Servicio agregado con éxito")
 
             case "3":
+                show_items(item_controller)
+
+            case "4":
                 print("Vuelve pronto")
                 break
 

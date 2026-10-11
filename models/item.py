@@ -20,7 +20,7 @@ class Item:
         return self._price 
 
     def set_price(self, price):
-        if(price >0):
+        if(price > 0):
             self._price = price
         else:
             raise ValueError("El precio del producto no puede ser 0 o negativo")
